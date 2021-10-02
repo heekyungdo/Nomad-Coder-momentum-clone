@@ -9,6 +9,7 @@
 // 위 세 코드를 짧고, 쉽게 바꾼 것
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
+const link = document.querySelector("a");
 // const loginButton = document.querySelector("#login-form button");
 
 // function onLoginBtnClick() {
@@ -33,12 +34,28 @@ const loginInput = document.querySelector("#login-form input");
 
 // submit event 감지
 // 새로고침 일어나는 건 form submit의 기본 동작.
-function onLoginSubmit() {
-  const username = loginInput.value;
-  console.log(username);
+function onLoginSubmit(event) {
+  // preventDefault는 어떤 event의 기본 행동이 발생되지 않도록 막는것.
+  event.preventDefault();
+  console.log(loginInput.value);
+  // const username = loginInput.value;
+  // console.log(username);
 }
 
 // addEventListener는 브라우저가 바로 실행시키려는게 아니라 submit을 해야 실행된다.
 loginForm.addEventListener("submit", onLoginSubmit);
 // ()을 더하면 브라우저가 보자마자 자동으로 이 function을 실행시킬거야.
-onLoginSubmit();
+// onLoginSubmit();
+
+function handleLinkClick(event) {
+  console.log(event);
+  // alert이 이 page가 다른 동작을 하지 못하도록 막고 있어. 확인 버튼을 누른 이후엔
+  // default값이 실행된다.
+  alert("clicked!");
+}
+
+link.addEventListener("click", handleLinkClick);
+
+// JS는 함수를 실행시키는 동시에 그 함수에 첫번째 인자로 object를 넣어 줄것임.
+// 그리고 object에는 방금 일어난 event에 대한 여러 정보가 담겨있다.
+// handleLinkClick({information about the event that just happened});
