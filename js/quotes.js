@@ -71,4 +71,14 @@ const quotes = [
 const quote = document.querySelector("#quote span:first-child");
 const author = document.querySelector("#quote span:last-child");
 
-console.log(quotes[0]);
+// console.log(quotes[0]);
+
+// Math.random()*15 -> 0~15사이의 랜덤 숫자
+// Math.ceil()->소숫점빼고 숫자를 올려줌. ex)1.99->2 / 1.2->2
+// Math.round()->반올림. ex)2.2->2 / 2.6->3
+// Math.floor()-> 소숫점빼고 숫자를 내려줌. ex)1.99->1 / 1.2->1
+// console.log(quotes[Math.floor(Math.random() * 15)]);
+const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+quote.innerText = todaysQuote.quote;
+author.innerText = todaysQuote.author;
