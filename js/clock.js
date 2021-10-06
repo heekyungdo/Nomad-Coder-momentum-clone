@@ -2,7 +2,13 @@ const clock = document.querySelector("h2#clock");
 
 function getClock() {
   const date = new Date();
-  clock.innerText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  // getHours,getMinutes.getSeconds는 number라서 문자로 바꿔준다.
+  // "1".padStart(2,"0") -> string의 길이를 2로 만드는데, 그 string의 길이가 2가 아니라면 앞쪽에 "0"을 추가한다.
+  // 그럼 결과는 01
+  const hours = String(date.getHours()).padStart(2, "0");
+  const mins = String(date.getMinutes()).padStart(2, "0");
+  const sec = String(date.getSeconds()).padStart(2, "0");
+  clock.innerText = `${hours}:${mins}:${sec}`;
 }
 
 // setInterval은 2개의 argument를 받는다.
