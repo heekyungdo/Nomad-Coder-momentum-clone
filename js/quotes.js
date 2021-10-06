@@ -73,7 +73,8 @@ const author = document.querySelector("#quote span:last-child");
 
 // console.log(quotes[0]);
 
-// Math.random()*15 -> 0~15사이의 랜덤 숫자
+// Math.random() -> 0~1사이의 랜덤 숫자 (소숫점 포함)
+// Math.random()*15 -> 0~15사이의 랜덤 숫자 (소숫점 포함)
 // Math.ceil()->소숫점빼고 숫자를 올려줌. ex)1.99->2 / 1.2->2
 // Math.round()->반올림. ex)2.2->2 / 2.6->3
 // Math.floor()-> 소숫점빼고 숫자를 내려줌. ex)1.99->1 / 1.2->1
