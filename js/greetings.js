@@ -34,6 +34,7 @@ const savedUsername = localStorage.getItem(USERNAME_KEY);
 if (savedUsername === null) {
   // form을 보여준다. class="hidden"을 없앰으로서
   loginForm.classList.remove(HIDDEN_CLASSNAME);
+  // form은 submit 이벤트를 가진다.
   // form에 있는 submit이 이벤트리슨되면, onLoginSubmit 함수 실행
   loginForm.addEventListener("submit", onLoginSubmit);
   // if값이 거짓이면 실행
