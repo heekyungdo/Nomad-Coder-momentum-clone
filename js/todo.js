@@ -2,13 +2,14 @@ const toDoForm = document.querySelector("#todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
 
+const TODOS_KEY = "todos";
 // whatToDo가 그려질 때마다 그 텍스트를 array에 push할거야
 // whatToDo를 그리기 전에 toDos array를 가지고 와서 whatToDo를 push할거야
 const toDos = [];
 
 function saveToDos() {
   // localStorage에 toDos를 저장
-  localStorage.setItem("todos", toDos);
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos)); //JSON.stringify는 object나 array 등을 string으로 만들어준다. array모양으로 저장된다.
 }
 
 // button을 클릭할 때, event를 얻게 될거야. event는 target을 줄거야
@@ -60,3 +61,22 @@ function addToDo(event) {
 
 // form에 이벤트리스너함수를 실행시켜, submit을 실행하면 addToDo 함수가 실행된다
 toDoForm.addEventListener("submit", addToDo);
+
+// 아래 arrow function이랑 완전히 같다.
+/* function sayHello(item) {
+  console.log("This is", item);
+} */
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+// console.log(savedToDos);
+// 만약 savedToDos가 null이 아니면
+if (savedToDos !== null) {
+  //JSON.parse를 사용하면 string을 array로 바꿔준다
+  const parsedToDos = JSON.parse(savedToDos);
+  // console.log(parsedToDos);
+  // forEach는 array 내에 있는 item에 대해 function을 실행하게 해준다
+  // parsedToDos에 있는 각각의 item에 대해서 console.log를 할거라는 의미
+  parsedToDos.forEach((item) => console.log("This is", item)); //parsedToDos가 갖고 있는 각각의 item에 대해 sayHello function을 실행해줘
+}
+
+//자바스크립트는 array에 있는 각각의 item에 대해 function을 실행할 수 있게 해준다.
